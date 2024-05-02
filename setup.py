@@ -33,6 +33,10 @@ for d in dirs:
 
 pkg_list = os.listdir(pkg)
 pkg_tail = ".tar.xz"
+module_path = "/usr/share/modules/modulefiles/dpdk"
+if not os.path.exists(module_path):
+    echo_run(f"mkdir -p {module_path}")
+
 for pkg_file in pkg_list:
     if not pkg_file.endswith(pkg_tail):
         print(f"skip {pkg_file}")
@@ -48,3 +52,12 @@ for pkg_file in pkg_list:
     echo_run(f"meson setup {build_path} {src_path} --prefix={install_path} 2>&1 >> {log_file}")
 
     echo_run(f"ninja -C {build_path} install 2>&1 >> {log_file}")
+
+    module_file = os.path.join(module_path, pkg_file[:-len(pkg_tail)])
+    with open(module_file, "w") as f:
+        bin_path = os.path.join(install_path, "bin")
+        include_path = os.path.join(install_path, "include")
+        lib_path = os.path.join(install_path, "lib", "x86_64-linux-gnu")
+        pkgconfig_path = os.path.join(lib_path, "pkgconfig")
+        print(pkgconfig_path)
+        f.write(f"#%Module1.0\nconflict dpdk\nprepend-path PATH {bin_path}\nprepend-path CPATH {include_path}\nprepend-path LD_LIBRARY {lib_path}\nprepend-path PKG_CONFIG_PATH {pkgconfig_path}\n")
