@@ -42,6 +42,7 @@ for pkg_file in pkg_list:
         print(f"skip {pkg_file}")
         continue
     echo_run(f"tar -xf {os.path.join(pkg, pkg_file)} -C {src} -m")
+    # TODO: rename the extracted folder
     src_name = most_recent(src)
     src_path = os.path.join(src, src_name)
     build_path = os.path.join(build, src_name)
