@@ -8,7 +8,7 @@ It support DPDK with version >= 20.
 
 # Usage
 
-1. Put setup.py under a folder like this.
+1. Put `setup.py` under a folder like this.
 
 ```
 .
@@ -20,7 +20,7 @@ It support DPDK with version >= 20.
 └── setup.py
 ```
 
-2. Edit setup.py, change variable `root`.  This changes the place for both building and installation.
+2. Edit `setup.py`, change variable `root`.  This changes the place for both building and installation.
 
 3. Run the script (with no arguments).
 
