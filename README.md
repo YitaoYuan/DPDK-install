@@ -10,6 +10,7 @@ It support DPDK with version >= 20.
 
 1. Put setup.py under a folder like this.
 
+```
 .
 ├── pkg
 │   ├── dpdk-20.11.10.tar.xz
@@ -17,6 +18,7 @@ It support DPDK with version >= 20.
 │   ├── dpdk-22.11.5.tar.xz
 │   └── dpdk-23.11.tar.xz
 └── setup.py
+```
 
 2. Edit setup.py, change variable `root`.  This changes the place for both building and installation.
 
