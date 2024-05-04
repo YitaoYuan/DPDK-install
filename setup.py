@@ -60,4 +60,4 @@ for pkg_file in pkg_list:
         lib_path = os.path.join(install_path, "lib", "x86_64-linux-gnu")
         pkgconfig_path = os.path.join(lib_path, "pkgconfig")
         print(pkgconfig_path)
-        f.write(f"#%Module1.0\nconflict dpdk\nprepend-path PATH {bin_path}\nprepend-path CPATH {include_path}\nprepend-path LD_LIBRARY {lib_path}\nprepend-path PKG_CONFIG_PATH {pkgconfig_path}\n")
+        f.write(f"#%Module1.0\nconflict dpdk\nprepend-path PATH {bin_path}\nprepend-path CPATH {include_path}\nprepend-path LD_LIBRARY_PATH {lib_path}\nprepend-path PKG_CONFIG_PATH {pkgconfig_path}\n")
